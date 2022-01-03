@@ -1,37 +1,72 @@
-package AccountManipulation;
+package AreaVolumeCalculator;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-	public static void main() {
+	public void main() {
 		Scanner sc=new Scanner(System.in);
-Account ac;
-		System.out.println("customerid");
-		int a=sc.nextInt();
-		System.out.println("customername");
-		String s=sc.next();
-		System.out.println("emailid");
-		String s2=sc.next();
-		System.out.println("accountnum");
-		int acn=sc.nextInt();
-		System.out.println("balance");
-		double b=sc.nextDouble();
-		System.out.println("minimum");
-		double c=sc.nextDouble();
-		System.out.println("amount");
-		int d=sc.nextInt();
-		Customer cs=new Customer(a,s,s2);
-		Account a1=new SavingsAccount(acn,cs,b,c);
-		boolean bl=a1.withdraw(d);
-		if(bl==true) {
-			System.out.println("Successful"+a1.getBalance());
-		}else {
-			System.out.println("Withdraw not possible"+a1.getBalance());
+		String[] s=new String[4];
+		Cube c=new Cube();
+		Rectangle r=new Rectangle();
+		Triangle t=new Triangle();
+		Sphere sp=new Sphere();
+		for(int i=0;i<s.length;i++) {
+			String k=sc.next();
+			if(k.equalsIgnoreCase("Triangle")) {
+				s[i]=k;
+				
+				t.setBase(sc.nextDouble());
+				t.setHeight(sc.nextDouble());
+			}
+			if(k.equalsIgnoreCase("Sphere")) {
+				s[i]=k;
+				
+				sp.setRadius(sc.nextDouble());
+			}
+			if(k.equalsIgnoreCase("Rectangle")) {
+				s[i]=k;
+				
+				r.setLength(sc.nextDouble());
+				
+				r.setWidth(sc.nextDouble());
+			}
+			if(k.equalsIgnoreCase("Cube")) {
+				s[i]=k;
+				
+				c.setHeight(sc.nextDouble());
+				
+				c.setLength(sc.nextDouble());
+				
+				c.setWidth(sc.nextDouble());
+			}
 		}
-	    
-		}public static void main(String[] args) {
-			main();
+			for(int i=0;i<s.length;i++) {
+		if(s[i].equalsIgnoreCase("Cube")) {
+			double a=c.area();
+			double v=c.volume();
+			System.out.println("Area "+a);
+			System.out.println("Volume "+v);
+		}
+		if(s[i].equalsIgnoreCase("Rectangle")) {
+			double a=r.area();
+			System.out.println("Area "+a);
+		}
+		if(s[i].equalsIgnoreCase("Triangle")) {
+			double a=t.area();
+			System.out.println("Area "+a);
 			
 		}
+		if(s[i].equalsIgnoreCase("Sphere")) {
+			double a=sp.area();
+			System.out.println("Area "+a);
+			double v=sp.volume();
+			System.out.println("Volume "+v);
+		}
+		}}
+	public static void main(String[] args) {
+		Main m=new Main();
+	m.main();
+	}
 
 }
